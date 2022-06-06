@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Staging Authentication</title>
+</head>
+<style media="screen">
+
+html{
+  font-size: 62.5%
+}
+
+body {
+  font-family: monospace;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  min-height: 100vh;
+  margin: 0;
+  background-color: blue;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  color: white;
+  text-align: center;
+  padding: 32px;
+  width: 25vw;
+  min-width: 304px;
+
+  border-radius: 32px;
+  box-shadow: 2px 2px 2px 4px black;
+}
+
+input {
+  border-radius: 6px;
+  font-size: 2rem;
+  width: 50%;
+  padding: 12px 24px;
+  border: 0;
+}
+
+button {
+  border: 0;
+  background-color: white;
+  border-radius: 6px;
+  font-size: 2rem;
+  width: 30%;
+  padding: 10px 0;
+  border: 2px solid deepskyblue;
+  box-shadow: 0 0 1px 1px black inset;
+}
+
+button:hover, button:focus {
+  cursor: pointer;
+  animation-name: button-ring;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes button-ring {
+  0% {
+    border-color: deepskyblue;
+  }
+
+  20% {
+    border-color: deepskyblue;
+  }
+
+  50% {
+    border-color: blue;
+  }
+
+  80% {
+    border-color: deepskyblue;
+  }
+
+  100% {
+    border-color: deepskyblue;
+  }
+}
+
+</style>
+<body>
+  <main>
+    <h1>Staging</h1>
+    <p>Login using:</p>
+    <p>staging</p>
+    <p>This is to prevent search engines from indexing the sites.</p>
+    <p><%= views %></p>
+    <form class="" action="/login" method="post">
+      <input type="text" name="user" placeholder="type here">
+      <button type="submit" name="button">Submit</button>
+    </form>
+  </main>
+</body>
+</html>
