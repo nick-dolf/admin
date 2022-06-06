@@ -24,7 +24,7 @@ app.get('/login', (req, res) => {
   res.render('login', {warning: ''})
 })
 
-app.post('/login', (req, res) => {
+app.post('./login', (req, res) => {
   if ( req.body.user.toLowerCase() == 'staging') {
     req.session.user = 'staging'
     res.redirect('./')
