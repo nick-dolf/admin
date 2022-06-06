@@ -16,19 +16,18 @@ app.get('/', (req, res) => {
   if (req.session.user == 'staging') {
     res.send('valid cookie')
   } else {
-    res.status(403).redirect('/login')
+    res.status(403).redirect('./login')
   }
 })
 
 app.get('/login', (req, res) => {
   res.render('login', {warning: ''})
-  console.log(req.query.page)
 })
 
 app.post('/login', (req, res) => {
   if ( req.body.user.toLowerCase() == 'staging') {
     req.session.user = 'staging'
-    res.redirect('/')
+    res.redirect('./')
   } else {
     res.render('login', {warning: 'Please type staging into input box'})
   }
