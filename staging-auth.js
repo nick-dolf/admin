@@ -13,13 +13,25 @@ app.use(cookieSession({
 }))
 
 app.get('/', (req, res) => {
-  req.session.views = (req.session.views || 0) + 1
-  res.render('login', {views: req.session.views})
+  if (req.session.user == 'staging') {
+    res.send('valid cookie')
+  } else {
+    res.status(403).redirect('/login')
+  }
+})
+
+app.get('/login', (req, res) => {
+  res.render('login', {warning: ''})
   console.log(req.query.page)
 })
 
 app.post('/login', (req, res) => {
-  console.log(req.body.user)
+  if ( req.body.user.toLowerCase() == 'staging') {
+    req.session.user = 'staging'
+    res.redirect('/')
+  } else {
+    res.render('login', {warning: 'Please type staging into input box'})
+  }
 })
 
 app.listen(PORT, () =>console.log(`Listening on port ${PORT}`))

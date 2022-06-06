@@ -82,6 +82,10 @@ button:hover, button:focus {
   }
 }
 
+.warning {
+  color: red;
+}
+
 </style>
 <body>
   <main>
@@ -89,7 +93,9 @@ button:hover, button:focus {
     <p>Login using:</p>
     <p>staging</p>
     <p>This is to prevent search engines from indexing the sites.</p>
-    <p><%= views %></p>
+    <% if (warning) { %>
+      <p><%= warning %></p>
+    <% } %>
     <form class="" action="/login" method="post">
       <input type="text" name="user" placeholder="type here">
       <button type="submit" name="button">Submit</button>
