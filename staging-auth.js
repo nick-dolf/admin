@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
   if (req.session.user == 'staging') {
     res.send('valid cookie')
   } else {
-    res.status(403).redirect('./login')
+    res.status(403).end()
   }
 })
 
