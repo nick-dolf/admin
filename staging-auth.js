@@ -3,6 +3,9 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cookieSession= require('cookie-session')
 const app = express()
+const morgan = require('morgan')
+
+app.use(morgan('common'))
 
 app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({ extended: false }))
