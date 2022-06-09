@@ -6,7 +6,7 @@ const router = express.Router()
 router.use(cookieSession({
   name: 'session',
   keys: ['key1', 'key2'],
-  maxAge: 30000
+  maxAge: 10 * 60 * 1000
 }))
 
 router.get('/login', (req, res) => {
@@ -19,7 +19,7 @@ router.post('/login', (req, res) => {
     if (req.session.original) {
       res.redirect('.' + req.session.original)
     } else {
-      res.redirect('./test.html' )
+      res.redirect('/' )
     }
 
   } else {
@@ -32,12 +32,10 @@ router.use((req, res, next) => {
     next()
   } else {
     req.session.original = req.url
-    res.redirect('/login')
+    res.redirect('/staging/login')
   }
 })
 
-
 router.use(express.static('../staging'))
-
 
 module.exports = router
