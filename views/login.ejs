@@ -2,6 +2,8 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Staging authorization to prevent search indexing">
   <title>Staging Authentication</title>
 </head>
 <style media="screen">
@@ -16,40 +18,77 @@ body {
   line-height: 1.5;
   min-height: 100vh;
   margin: 0;
-  background-color: blue;
+  background-color: #101CA7;
+  min-width: 320px;
+  position: relative;
 
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+svg {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  stroke-dasharray: 100;
+  stroke-width: 1px;
+  stroke-linecap: round;
+  animation: dash 5s linear infinite;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 200;
+  }
+}
+
 main {
   color: white;
+  background-color: #101CA7;
   text-align: center;
   padding: 32px;
-  width: 25vw;
-  min-width: 304px;
+  width: 30vw;
+  min-width: 256px;
+  max-width: 400px;
 
   border-radius: 32px;
   box-shadow: 2px 2px 2px 4px black;
 }
 
+.destination {
+  color: black;
+}
+
+.warning {
+  min-height: 5rem;
+  color: #B0061E;
+}
+
 input {
   border-radius: 6px;
   font-size: 2rem;
-  width: 50%;
   padding: 12px 24px;
   border: 0;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 24px;
 }
 
 button {
   border: 0;
-  background-color: white;
+  background-color: #5CA1E5;
+  color: black;
   border-radius: 6px;
   font-size: 2rem;
-  width: 30%;
   padding: 10px 0;
-  border: 2px solid deepskyblue;
+  border: 2px solid #5CA1E5;
   box-shadow: 0 0 1px 1px black inset;
 }
 
@@ -62,23 +101,23 @@ button:hover, button:focus {
 
 @keyframes button-ring {
   0% {
-    border-color: deepskyblue;
+    border-color: #5CA1E5;
   }
 
   20% {
-    border-color: deepskyblue;
+    border-color: #5CA1E5;
   }
 
   50% {
-    border-color: blue;
+    border-color: #101CA7;
   }
 
   80% {
-    border-color: deepskyblue;
+    border-color: #5CA1E5;
   }
 
   100% {
-    border-color: deepskyblue;
+    border-color: #5CA1E5;
   }
 }
 
@@ -88,14 +127,20 @@ button:hover, button:focus {
 
 </style>
 <body>
+  <svg class="lines" stroke="white" viewbox="0 0 200 200" preserveAspectRatio="none">
+    <line x1="0" y1="10" x2="200" y2="10" />
+    <line x1="0" y1="50" x2="200" y2="50" />
+    <line x1="0" y1="100" x2="200" y2="100" />
+    <line x1="0" y1="150" x2="200" y2="150" />
+    <line x1="0" y1="190" x2="200" y2="190" />
+  </svg>
   <main>
     <h1>Staging</h1>
+    <p class="destination"><% if (locals.destination) {%> <%- destination %> <%} %></p>
     <p>Login using:</p>
     <p>staging</p>
-    <p>This is to prevent search engines from indexing the sites.</p>
-    <% if (warning) { %>
-      <p><%= warning %></p>
-    <% } %>
+    <p>This helps prevent search engines from indexing the sites.</p>
+    <p class="warning"><% if (locals.warning) {%> <%- warning %> <%} %></p>
     <form class="" action="./login" method="post">
       <input type="text" name="user" placeholder="type here">
       <button type="submit" name="button">Submit</button>

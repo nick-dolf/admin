@@ -10,7 +10,7 @@ router.use(cookieSession({
 }))
 
 router.get('/login', (req, res) => {
-  res.render('login', {warning: req.session.original})
+  res.render('login', {destination: req.session.original})
 })
 
 router.post('/login', (req, res) => {
