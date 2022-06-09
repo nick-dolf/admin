@@ -32,7 +32,7 @@ router.use((req, res, next) => {
     next()
   } else {
     req.session.original = req.url
-    res.redirect('login')
+    res.redirect('/login')
   }
 })
 
