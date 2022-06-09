@@ -6,7 +6,7 @@ const router = express.Router()
 router.use(cookieSession({
   name: 'session',
   keys: ['key1', 'key2'],
-  maxAge: 10 * 60 * 1000
+  maxAge: 120 * 60 * 60 * 1000
 }))
 
 router.get('/login', (req, res) => {
