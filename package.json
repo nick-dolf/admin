@@ -1,8 +1,8 @@
 {
   "name": "staging-auth",
   "version": "1.0.0",
-  "description": "A simple staging serving for authentication to prevent search engines from indexing sites.",
-  "main": "staging-auth.js",
+  "description": "A Node proess to take care of various site admin",
+  "main": "admin.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
